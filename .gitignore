@@ -2,3 +2,4 @@
 /out
 /build
 /questions.js
+*.copy.ts
