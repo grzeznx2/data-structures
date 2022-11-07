@@ -73,8 +73,45 @@ export class Heap<T> {
     }
   }
 
+  bubbleDown() {
+    let currentIndex = 0
+    let nextIndex = null
+
+    while (this.hasLeftChild(currentIndex)) {
+      if (
+        this.hasRightChild(currentIndex) &&
+        this.isInCorrectOrder(this.getRightChild(currentIndex), this.getLeftChild(currentIndex))
+      ) {
+        nextIndex = this.getRightChildIndex(currentIndex)
+      } else {
+        nextIndex = this.getLeftChildIndex(currentIndex)
+      }
+
+      if (this.isInCorrectOrder(this.values[currentIndex], this.values[nextIndex])) {
+        break
+      }
+
+      this.swap(currentIndex, nextIndex)
+
+      currentIndex = nextIndex
+    }
+  }
+
   insert(value: T) {
     this.values.push(value)
     this.bubbleUp()
+  }
+
+  poll() {
+    if (this.length === 0) return null
+    if (this.length === 1) return this.values.pop()
+
+    const removed = this.values[0]
+
+    this.values[0] = this.values.pop()!
+
+    this.bubbleDown()
+
+    return removed
   }
 }
