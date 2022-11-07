@@ -12,54 +12,54 @@ export class Heap<T> {
     return this.values.length
   }
 
-  getLeftChildIndex(parentIndex: number) {
+  private getLeftChildIndex(parentIndex: number) {
     return parentIndex * 2 + 1
   }
 
-  getRightChildIndex(parentIndex: number) {
+  private getRightChildIndex(parentIndex: number) {
     return parentIndex * 2 + 2
   }
 
-  getParentIndex(childIndex: number) {
+  private getParentIndex(childIndex: number) {
     return Math.floor((childIndex - 1) / 2)
   }
 
-  hasParent(childIndex: number) {
+  private hasParent(childIndex: number) {
     return this.getParentIndex(childIndex) >= 0
   }
 
-  hasLeftChild(parentIndex: number) {
+  private hasLeftChild(parentIndex: number) {
     return this.getLeftChildIndex(parentIndex) < this.length
   }
 
-  hasRightChild(parentIndex: number) {
+  private hasRightChild(parentIndex: number) {
     return this.getRightChildIndex(parentIndex) < this.length
   }
 
-  getLeftChild(parentIndex: number) {
+  private getLeftChild(parentIndex: number) {
     return this.values[this.getLeftChildIndex(parentIndex)]
   }
 
-  getRightChild(parentIndex: number) {
+  private getRightChild(parentIndex: number) {
     return this.values[this.getRightChildIndex(parentIndex)]
   }
 
-  getParent(childIndex: number) {
+  private getParent(childIndex: number) {
     return this.values[this.getParentIndex(childIndex)]
   }
 
-  swap(firstIndex: number, secondIndex: number) {
+  private swap(firstIndex: number, secondIndex: number) {
     ;[this.values[firstIndex], this.values[secondIndex]] = [
       this.values[secondIndex],
       this.values[firstIndex],
     ]
   }
 
-  isInCorrectOrder(first: T, second: T) {
+  private isInCorrectOrder(first: T, second: T) {
     return this.comparator.isGreaterThanOrEqual(first, second)
   }
 
-  bubbleUp() {
+  private bubbleUp() {
     let currentIndex = this.length - 1
     let parentIndex = this.getParentIndex(currentIndex)
 
@@ -73,7 +73,7 @@ export class Heap<T> {
     }
   }
 
-  bubbleDown() {
+  private bubbleDown() {
     let currentIndex = 0
     let nextIndex = null
 
@@ -113,5 +113,23 @@ export class Heap<T> {
     this.bubbleDown()
 
     return removed
+  }
+
+  peek() {
+    if (this.length === 0) return null
+
+    return this.values[0]
+  }
+
+  find(value: T) {
+    const indices: number[] = []
+
+    for (let i = 0; i < this.length; i++) {
+      if (this.comparator.isEqual(this.values[i], value)) {
+        indices.push(i)
+      }
+    }
+
+    return indices
   }
 }
