@@ -45,4 +45,25 @@ export default class BinarySearchTree<T> {
     }
     return null
   }
+
+  breadthFirstSearch() {
+    const results: T[] = []
+    const queue: BinarySearchTree<T>[] = [this]
+
+    while (queue.length > 0) {
+      const removed = queue.shift()
+
+      results.push(removed!.value)
+
+      if (removed?.left) {
+        queue.push(removed.left)
+      }
+
+      if (removed?.right) {
+        queue.push(removed.right)
+      }
+    }
+
+    return results
+  }
 }

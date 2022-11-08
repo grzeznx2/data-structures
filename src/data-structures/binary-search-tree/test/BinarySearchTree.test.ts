@@ -34,4 +34,17 @@ describe('BinarySearchTree', () => {
     expect(bst.find(18)?.value).toBe(18)
     expect(bst.find(50)).toBe(null)
   })
+
+  it('performs breadth first search', () => {
+    const bst = new BinarySearchTree(10)
+
+    bst.add(5)
+    bst.add(15)
+    bst.add(7)
+    bst.add(12)
+    bst.add(4)
+    bst.add(18)
+
+    expect(bst.breadthFirstSearch()).toStrictEqual([10, 5, 15, 4, 7, 12, 18])
+  })
 })
