@@ -30,4 +30,19 @@ export default class BinarySearchTree<T> {
       }
     }
   }
+
+  find(value: T) {
+    let current: BinarySearchTree<T> | null = this
+
+    while (current) {
+      if (current.value === value) {
+        return current
+      } else if (value < current.value) {
+        current = current.left
+      } else {
+        current = current.right
+      }
+    }
+    return null
+  }
 }
