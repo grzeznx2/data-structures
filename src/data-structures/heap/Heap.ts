@@ -1,6 +1,6 @@
 import Comparator, { CompareFunction } from '../../utils/Comparator'
 
-export class Heap<T> {
+export abstract class Heap<T> {
   values: T[] = []
   comparator: Comparator<T>
 
@@ -55,17 +55,13 @@ export class Heap<T> {
     ]
   }
 
-  private isInCorrectOrder(first: T, second: T) {
-    return this.comparator.isGreaterThanOrEqual(first, second)
-  }
-
   private bubbleUp() {
     let currentIndex = this.length - 1
     let parentIndex = this.getParentIndex(currentIndex)
 
     while (
       this.hasParent(currentIndex) &&
-      !this.isInCorrectOrder(this.values[parentIndex], this.values[currentIndex])
+      !this.areOrdered(this.values[parentIndex], this.values[currentIndex])
     ) {
       this.swap(currentIndex, parentIndex)
       currentIndex = parentIndex
@@ -80,14 +76,14 @@ export class Heap<T> {
     while (this.hasLeftChild(currentIndex)) {
       if (
         this.hasRightChild(currentIndex) &&
-        this.isInCorrectOrder(this.getRightChild(currentIndex), this.getLeftChild(currentIndex))
+        this.areOrdered(this.getRightChild(currentIndex), this.getLeftChild(currentIndex))
       ) {
         nextIndex = this.getRightChildIndex(currentIndex)
       } else {
         nextIndex = this.getLeftChildIndex(currentIndex)
       }
 
-      if (this.isInCorrectOrder(this.values[currentIndex], this.values[nextIndex])) {
+      if (this.areOrdered(this.values[currentIndex], this.values[nextIndex])) {
         break
       }
 
@@ -132,4 +128,6 @@ export class Heap<T> {
 
     return indices
   }
+
+  abstract areOrdered(first: T, second: T): boolean
 }

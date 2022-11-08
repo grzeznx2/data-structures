@@ -1,8 +1,8 @@
-import { Heap } from '../Heap'
+import MaxHeap from '../MaxHeap'
 
-describe('Heap', () => {
+describe('MaxHeap', () => {
   it('properly adds values', () => {
-    const heap = new Heap()
+    const heap = new MaxHeap()
 
     heap.insert(1)
     heap.insert(3)
@@ -15,7 +15,7 @@ describe('Heap', () => {
   })
 
   it('properly removes values', () => {
-    const heap = new Heap()
+    const heap = new MaxHeap()
 
     heap.insert(1)
     heap.insert(3)
