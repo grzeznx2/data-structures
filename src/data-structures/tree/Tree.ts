@@ -10,13 +10,13 @@ export default class Tree<T> {
   }
 
   deepFirstSearch() {
-    const values: T[] = []
+    const result: T[] = []
 
     let stack: Tree<T>[] = [this]
 
     while (stack.length > 0) {
       const removed = stack.pop()
-      values.push(removed!.value)
+      result.push(removed!.value)
 
       if (removed?.right) {
         stack.push(removed.right)
@@ -27,6 +27,28 @@ export default class Tree<T> {
       }
     }
 
-    return values
+    return result
+  }
+
+  breadthFirstSearch() {
+    const result: T[] = []
+
+    const queue: Tree<T>[] = [this]
+
+    while (queue.length > 0) {
+      const removed = queue.shift()
+
+      result.push(removed!.value)
+
+      if (removed?.left) {
+        queue.push(removed.left)
+      }
+
+      if (removed?.right) {
+        queue.push(removed.right)
+      }
+    }
+
+    return result
   }
 }
