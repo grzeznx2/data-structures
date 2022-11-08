@@ -2,7 +2,7 @@ import MaxHeap from '../MaxHeap'
 
 describe('MaxHeap', () => {
   it('properly adds values', () => {
-    const heap = new MaxHeap()
+    const heap = new MaxHeap<number>()
 
     heap.insert(1)
     heap.insert(3)
@@ -15,7 +15,7 @@ describe('MaxHeap', () => {
   })
 
   it('properly removes values', () => {
-    const heap = new MaxHeap()
+    const heap = new MaxHeap<number>()
 
     heap.insert(1)
     heap.insert(3)

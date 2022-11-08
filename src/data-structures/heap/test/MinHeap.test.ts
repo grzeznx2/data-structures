@@ -2,7 +2,7 @@ import MinHeap from '../MinHeap'
 
 describe('MinHeap', () => {
   it('properly adds values', () => {
-    const heap = new MinHeap()
+    const heap = new MinHeap<number>()
 
     heap.insert(1)
     heap.insert(3)
@@ -15,7 +15,7 @@ describe('MinHeap', () => {
   })
 
   it('properly removes values', () => {
-    const heap = new MinHeap()
+    const heap = new MinHeap<number>()
 
     heap.insert(1)
     heap.insert(3)
