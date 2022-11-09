@@ -47,4 +47,19 @@ describe('BinarySearchTree', () => {
 
     expect(bst.breadthFirstSearch()).toStrictEqual([10, 5, 15, 4, 7, 12, 18])
   })
+
+  it('performs depth first search', () => {
+    const bst = new BinarySearchTree(10)
+
+    bst.add(5)
+    bst.add(15)
+    bst.add(7)
+    bst.add(12)
+    bst.add(4)
+    bst.add(18)
+
+    console.log(bst.depthFirstSearch())
+
+    expect(bst.depthFirstSearch()).toStrictEqual([10, 5, 4, 7, 15, 12, 18])
+  })
 })

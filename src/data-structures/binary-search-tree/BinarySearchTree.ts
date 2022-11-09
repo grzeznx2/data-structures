@@ -66,4 +66,27 @@ export default class BinarySearchTree<T> {
 
     return results
   }
+
+  depthFirstSearch() {
+    const results: T[] = []
+    const stack: BinarySearchTree<T>[] = [this]
+
+    while (stack.length > 0) {
+      const removed = stack.pop()
+
+      if (!removed) break
+
+      results.push(removed.value)
+
+      if (removed.right) {
+        stack.push(removed.right)
+      }
+
+      if (removed.left) {
+        stack.push(removed.left)
+      }
+    }
+
+    return results
+  }
 }
