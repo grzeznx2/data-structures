@@ -1,5 +1,3 @@
-// import isAnagram from '../is-anagram'
-
 import isAnagram from './is-anagram'
 
 describe('Is Anagram:', () => {
