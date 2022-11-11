@@ -1,3 +1,7 @@
+/*
+Given an unsorted linked list, count the number of elements (iteratively or recursively).
+*/
+
 import { LinkedListNode } from '../../../../data-structures/linked-list/LinkedListNode'
 
 export default function countNodes<T>(list: LinkedListNode<T> | null): number {
