@@ -1,4 +1,4 @@
-import isSquaredArray from '../is-squared-array'
+import isSquaredArray from './is-squared-array'
 
 describe('Is squared array', () => {
   it('[1,2,3], [1,4,9] returns true', () => {

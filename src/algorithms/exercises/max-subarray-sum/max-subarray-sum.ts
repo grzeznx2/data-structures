@@ -1,3 +1,8 @@
+/*
+Write a function which accepts an array 'array' of integers and a number 'subarrayLength' and returns the maximum sum of 'subarrayLength' consecutive elements
+in the 'array'.
+*/
+
 export default function maxSubArraySum(array: number[], subarrayLength: number): number {
   if (array.length < subarrayLength) {
     return array.reduce((prev, cur) => prev + cur, 0)
