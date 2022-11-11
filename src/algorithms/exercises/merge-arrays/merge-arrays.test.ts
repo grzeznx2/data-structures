@@ -24,4 +24,8 @@ describe('Merge Arrays:', () => {
   it('[-10,1,2,3,4], [-2,-1] returns [-10,-2,-1,1,2,3,4]', () => {
     expect(mergeArrays([1, 2, 3, 4], [-10, -2, -1])).toStrictEqual([-10, -2, -1, 1, 2, 3, 4])
   })
+
+  it('[4,5,6], [0,1,2] returns [0,1,2,4,5,6]', () => {
+    expect(mergeArrays([4, 5, 6], [0, 1, 2])).toStrictEqual([0, 1, 2, 4, 5, 6])
+  })
 })
