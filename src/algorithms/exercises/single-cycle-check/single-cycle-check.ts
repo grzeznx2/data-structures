@@ -5,7 +5,7 @@ function calcNextIndex(currentIndex: number, array: number[]) {
   return nextIndex + array.length
 }
 
-function singleCycleCheck(array: number[]) {
+export default function singleCycleCheck(array: number[]) {
   // Write your code here.
   // 	1. Create a hash map of indices visited
   const indicesVisited: { [key: number]: boolean } = {}
